@@ -2,10 +2,12 @@
 
 namespace inquid\howlerjs;
 
+use yii\base\Widget;
+
 /**
  * This is just an example.
  */
-class HowlerJs extends \yii\base\Widget
+class HowlerJs extends Widget
 {
     public function init()
     {
