@@ -1,0 +1,21 @@
+{
+    "name": "inquid/yii2-howler-js",
+    "description": "Javascript audio library for the modern web. https://howlerjs.com *WIDGET FOR Yii*",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","music","howler.js","javascript","js","player","music player"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Inquid",
+            "email": "contact@inquid.co"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "inquid\\howlerjs\\": "src"
+        }
+    }
+}
