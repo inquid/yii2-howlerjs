@@ -77,7 +77,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
-        src: ['" . ($this->remoteFiles ? '' : ($this->path != '' ? $this->path : $asset->baseUrl . '/')) . "' + data.file],
+        src: ['" . ($this->remoteFiles ? '' : ($this->path ? $this->path . '/' : $asset->baseUrl . '/')) . "' + data.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
           // Display the duration.
