@@ -11,10 +11,14 @@ use yii\helpers\Json;
 class HowlerJsPlayer extends Widget
 {
     public $path = null;
-    public $files = [['title' => '80s Vibe', 'file'=>'80s_vibe.mp3', 'howl' => null]];
+    public $files = [['title' => '80s Vibe', 'file' => '80s_vibe.mp3', 'howl' => null]];
+    public $remoteFiles = false;
 
     public function init()
     {
+        if ($this->remoteFiles) {
+            $this->path = '';
+        }
         $asset = HowlerJsAssets::register($this->view);
         $this->view->registerJs("/*!
  *  Howler.js Audio Player Demo
@@ -73,7 +77,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
-        src: ['" . ($this->path ? $this->path : $asset->baseUrl) . "/' + data.file],
+        src: ['" . ($this->remoteFiles ? '' : ($this->path != '' ? $this->path : $asset->baseUrl . '/')) . "' + data.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
           // Display the duration.
