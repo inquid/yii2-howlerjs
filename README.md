@@ -28,11 +28,14 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 Some Howler options are available like volume
 ```php
+<?= \inquid\howlerjs\HowlerJsSimple::widget(['songs' => ["http://www.hochmuth.com/mp3/Vivaldi_Sonata_eminor_.mp3"]]); ?>
+```
+Or if you want to use the example full screen player (recommended to use with an empty layout view):
+```php
 <?= \inquid\howlerjs\HowlerJsPlayer::widget(['path' => Yii::getAlias('@web/music'),
         'files' =>
         [
-            ['title' => 'Cosa1', 'file' => 'Vivaldi_Sonata_eminor_.mp3', 'howl' => null]
+            ['title' => 'Vivaldi Example', 'file' => 'Vivaldi_Sonata_eminor_.mp3', 'howl' => null]
         ]
     ]); ?>
-<?= \inquid\howlerjs\HowlerJsSimple::widget(['songs' => ["http://www.hochmuth.com/mp3/Vivaldi_Sonata_eminor_.mp3"]]); ?>
 ```
