@@ -3,12 +3,16 @@
 namespace inquid\howlerjs;
 
 use yii\base\Widget;
+use yii\helpers\Json;
 
 /**
  * This is just an example.
  */
-class HowlerJs extends Widget
+class HowlerJsPlayer extends Widget
 {
+    public $path = null;
+    public $files = [['title' => '80s Vibe', 'file'=>'80s_vibe.mp3', 'howl' => null]];
+
     public function init()
     {
         $asset = HowlerJsAssets::register($this->view);
@@ -69,7 +73,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
-        src: ['" . $asset->baseUrl . "/audio/' + data.file + '.webm', '" . $asset->baseUrl . "/audio/' + data.file + '.mp3'],
+        src: ['" . ($this->path ? $this->path : $asset->baseUrl) . "/' + data.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
           // Display the duration.
@@ -280,23 +284,7 @@ Player.prototype = {
 };
 
 // Setup our new audio player class and pass it the playlist.
-var player = new Player([
-  {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    howl: null
-  },
-  {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    howl: null
-  },
-  {
-    title: 'Running Out',
-    file: 'running_out',
-    howl: null
-  }
-]);
+var player = new Player(" . Json::encode($this->files) . ");
 
 // Bind our player controls.
 playBtn.addEventListener('click', function() {
