@@ -39,3 +39,11 @@ Or if you want to use the example full screen player (recommended to use with an
         ]
     ]); ?>
 ```
+If you want to use remote http files
+```php
+\inquid\howlerjs\HowlerJsPlayer::widget([
+    'remoteFiles' => true,
+    'files' =>
+[['title' => $file->name, 'file' => 'https://storage.googleapis.com/enter-video.appspot.com/music/Vivaldi_Sonata_eminor_.mp3', 'howl' => null]]
+]);
+```
